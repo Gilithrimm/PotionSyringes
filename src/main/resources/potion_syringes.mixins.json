@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.safenar.potion_syringes.mixins",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "BrewingRegistryCorrector",
+    "BrewingStandCorrector",
+    "BrewingStandScreenCorrector"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

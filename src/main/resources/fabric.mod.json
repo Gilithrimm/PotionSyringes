@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "potion_syringes",
+  "version": "${version}",
+  "name": "PotionSyringes",
+  "description": "Adds Syringes that can be filled with potions.",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/Gilithrimm/PotionSyringes"
+  },
+  "license": "Apache-2.0",
+  "icon": "assets/potion_syringes/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.safenar.potion_syringes.PotionSyringes"
+    ]
+  },
+  "mixins": [
+    "potion_syringes.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
