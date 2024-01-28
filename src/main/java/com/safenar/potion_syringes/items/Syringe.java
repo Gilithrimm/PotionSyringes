@@ -12,6 +12,7 @@ import net.minecraft.potion.PotionUtil;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -31,6 +32,7 @@ public class Syringe extends PotionItem {
 			Criteria.CONSUME_ITEM.trigger((ServerPlayerEntity) playerEntity, stack);
 		}
 
+		// applying the effects
 		if (!world.isClient) {
 			List<StatusEffectInstance> list = PotionUtil.getPotionEffects(stack);
 
@@ -53,6 +55,7 @@ public class Syringe extends PotionItem {
 			}
 		}
 
+		// adding to stats
 		if (playerEntity != null) {
 			playerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
 			if (!playerEntity.getAbilities().creativeMode) {
@@ -60,6 +63,7 @@ public class Syringe extends PotionItem {
 			}
 		}
 
+		//replacing w/ empty syringe
 		if (playerEntity == null || !playerEntity.getAbilities().creativeMode) {
 			if (stack.isEmpty()) {
 				return new ItemStack(PotionSyringes.EMPTY_SYRINGE);
@@ -81,5 +85,10 @@ public class Syringe extends PotionItem {
 	@Override
 	public ActionResult useOnBlock(ItemUsageContext context) {
 		return ActionResult.PASS;
+	}
+
+	@Override
+	public UseAction getUseAction(ItemStack stack) {
+		return UseAction.NONE;
 	}
 }
